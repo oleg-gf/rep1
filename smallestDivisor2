@@ -1,0 +1,14 @@
+export const smallestDivisor = (n) => {
+    if (n === 1) {
+      return 1;
+    }
+    if (n < 1) {
+      return NaN;
+    } 
+    let result = 2;
+    while (n % result !== 0) {
+      result = result + 1;
+    }
+    
+  return result;
+};
