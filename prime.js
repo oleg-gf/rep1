@@ -11,3 +11,4 @@ export const isPrime = (n) => {
   };
   return (gd(n, 2) === 1);
 };
+
