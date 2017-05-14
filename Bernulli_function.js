@@ -1,18 +1,16 @@
-const Bernulli = (k1, n1, p) => {
-  const Combination = (k, n) => {
-   /*Combination - функция для вычисления Сочетания*/
-    const factorial = (f) => {
-      let add = f;
-      if (add === 1 || add === 0) {
+const factorial = (f) => {
+      let mult = f;
+      if (mult === 1 || mult === 0) {
         return 1;
       }
-      add--;
-      return factorial(add)*f;
-    };
-    return factorial(n)/(factorial(n - k)*factorial(k));
-  };
-  
-  return Combination(k1, n1)*(p**k1)*((1 - p)**(n1 - k1));
+      mult--;
+      return factorial(mult)*f;
+};
+const Combination = (k, n) => {
+   return factorial(n)/(factorial(n - k)*factorial(k));
+};
+const Bernulli = (k, n, p) => {
+  return Combination(k, n)*(p**k)*((1 - p)**(n - k));
  };
  
- Bernulli (2, 10, 0.05);
+Bernulli (2, 10, 0.05);
