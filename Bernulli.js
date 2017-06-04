@@ -9,11 +9,22 @@ const Bernulli = (k1, n1, p) => {
       add--;
       return factorial(add)*f;
     };
-    return factorial(n)/(factorial(n - k)*factorial(k));
+    const Permutation = (k, n) => {
+       /*Permutation - функция для вычисления Размещения*/
+      let nk = n - k;
+      const iter = (current) => {
+          if (current === nk) {
+            return 1;
+          }
+          return current * iter(current - 1);
+        };
+       return iter(n);
+
+    };
+    return Permutation(k, n)/factorial(k);
   };
   let result = 0;
   for (let i = 0; i <= k1; i++) {
-    console.log(Combination(i, n1) + "|" + result);
     result += Combination(i, n1)*(p**i)*((1 - p)**(n1 - i));
   }
   return result;
