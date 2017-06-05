@@ -10,6 +10,6 @@ const variance = (arr) => {
     result += (arr[j] - x)**2;
     console.log((arr[j] - x)**2);
   }
-  return result;
+  return result/arr.length;
 };
 variance ([5,3,4,5,3]);
