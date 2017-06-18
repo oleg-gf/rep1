@@ -1,11 +1,22 @@
 function getLengthOfMissingArray(arrayOfArrays) {
+  if (arrayOfArrays == null) {
+        return 0;
+      }
   if (arrayOfArrays.length > 0) {
     let arr2 = [];
-    for (i = 0; i < arrayOfArrays.length; i++) {
+    for (let i = 0; i < arrayOfArrays.length; i++) {
+      if ( arrayOfArrays[i] == null) {
+        return 0;
+      }
+      if (arrayOfArrays[i].length === 0 ) {
+        return 0;
+      }
       arr2.push(arrayOfArrays[i].length);
     }
-    
-    for (i = 1; i <= arrayOfArrays.length; i++) {
+    arr2.sort(function(a, b) {
+      return a - b;
+    });
+    for (i = arr2[0]; i <= (arr2[0] + arr2.length); i++) {
       
       if (!arr2.includes(i)) {
         return i;
