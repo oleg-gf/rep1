@@ -51,18 +51,18 @@ div(rat1, rat2); // 4/21
 */
 
 
-const cons = (x, y) => m => m(x, y);
-const car =  (pair) => pair ((x, y) => x);
-const cdr =  (pair) => pair ((x, y) => y);
+const cons = (x, y) => m => m(x, y); // создаём конструктор пар
+const car =  (pair) => pair ((x, y) => x); // выковыриваем из пары левый элемент
+const cdr =  (pair) => pair ((x, y) => y); // выковыриваем из пары правый элемент
 const make = (x, y) =>  cons(x, y);
  const numer = car(make);
  const denom = cdr(make);
  const toString = rat => `${numer(rat)} / ${denom(rat)}`;
- const isEqual = (ratio1, ratio2) => numer(ratio1) * denom(ratio2) === numer(ratio2) * denom(ratio1);
- const add = (ratio1, ratio2) => (numer(ratio1) * denom(ratio2) + numer(ratio2) * denom(ratio1)) + ' / ' + (denom(ratio1) * denom(ratio2));
- const sub = (ratio1, ratio2) => (numer(ratio1) * denom(ratio2) - numer(ratio2) * denom(ratio1)) + ' / ' + (denom(ratio1) * denom(ratio2));
- const mul = (ratio1, ratio2) => (numer(ratio1) * numer(ratio2)) + ' / ' + (denom(ratio1) * denom(ratio2));
- const div = (ratio1, ratio2) => (numer(ratio1) * denom(ratio2)) + ' / ' + (numer(ratio2) * denom(ratio1));
+  const isEqual = (rat1, rat2) => numer(rat1) * denom(rat2) === numer(rat2) * denom(rat1);
+ const add = (rat1, rat2) => (numer(rat1) * denom(rat2) + numer(rat2) * denom(rat1)) + ' / ' + (denom(rat1) * denom(rat2));
+ const sub = (rat1, rat2) => (numer(rat1) * denom(rat2) - numer(rat2) * denom(rat1)) + ' / ' + (denom(rat1) * denom(rat2));
+ const mul = (rat1, rat2) => (numer(rat1) * numer(rat2)) + ' / ' + (denom(rat1) * denom(rat2));
+ const div = (rat1, rat2) => (numer(rat1) * denom(rat2)) + ' / ' + (numer(rat2) * denom(rat1));
 const rat1 = make(2, 3);
 const rat12 = make(4, 6);
 const rat2 = make(7, 2);
