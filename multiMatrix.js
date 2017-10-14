@@ -16,4 +16,13 @@ const multiMatrix = (a, b) => {
   }
   return result;
 };
+const expMatrix = (matrix, exp) => {
+  const iter = (acc, count) => {
+    if (exp === count) {
+      return acc;
+    }
+    return iter(multiMatrix(matrix, acc), count + 1);
+  }
+  return iter(matrix, 1);;
+};
 multiMatrix([[1, 0, 2], [3, 1, 0]], [[-1, 0, 1], [5, 1, 4], [-2, 0, 1]]);
