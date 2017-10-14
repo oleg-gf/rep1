@@ -1,20 +1,32 @@
 const multiMatrix = (a, b) => {
-  if (a[0].length !== b.length) {
+  const arows = a.length;
+  const acols = a[0].length;
+  const bcols = b[0].length;
+  if (acols !== b.length) {
     return 'Матрицы не согласованы';
   }
-  const result = a.clone();
-  let sum = 0;
-  for (let i = 0; i < a.length; i++) {
-    result.push([]);
-    for (let h = 0; h < b[0].length; h++) {
-      for (let j = 0; j < a[0].length; j++) {
-        sum += a[i][j] * b[j][h];
+  const result = [];
+  const iter1 = (i) => {
+    if (i >= arows) {
+      return result;
       }
-      result[i][h] = sum;
-      sum = 0;
+    result.push([]);
+      const iter2 = (h) => {
+        if (h >= bcols) {
+          return result;
+        }
+        const iter3 = (sum, j) => {
+          if (j >= acols)  {return sum;}
+          console.log('a[',i,'][',j,'] = ', a[i][j], '| b[',j,'][',h,'] = ', b[j][h], 'sum = ',sum);
+          return iter3(sum + a[i][j] * b[j][h], j + 1);
+        };
+        result[i][h] = iter3(0, 0);
+      return iter2(h + 1);
     }
+    iter2(0);
+    return iter1(i + 1);
   }
-  return result;
+  return iter1(0);
 };
 const expMatrix = (matrix, exp) => {
   const iter = (acc, count) => {
