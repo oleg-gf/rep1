@@ -17,7 +17,6 @@ const multiMatrix = (a, b) => {
         }
         const iter3 = (sum, j) => {
           if (j >= acols)  {return sum;}
-          console.log('a[',i,'][',j,'] = ', a[i][j], '| b[',j,'][',h,'] = ', b[j][h], 'sum = ',sum);
           return iter3(sum + a[i][j] * b[j][h], j + 1);
         };
         result[i][h] = iter3(0, 0);
