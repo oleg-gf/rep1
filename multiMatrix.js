@@ -6,23 +6,25 @@ const multiMatrix = (a, b) => {
     return 'Матрицы не согласованы';
   }
   const result = [];
+  const pushInResult = (f, i, h) => result[i][h] = f;
+  const iter3 = (sum, i, h, j) => {
+          if (j >= acols)  {return sum;}
+          console.log('a[',i,'][',j,'] = ', a[i][j], '| b[',j,'][',h,'] = ', b[j][h], 'sum = ',sum);
+          return iter3(sum + a[i][j] * b[j][h], i, h, j + 1);
+        };
+  const iter2 = (i, h) => {
+        if (h >= bcols) {
+          return result;
+        }
+        pushInResult(iter3(0, i, h, 0), i, h);
+      return iter2(i, h + 1);
+      }
   const iter1 = (i) => {
     if (i >= arows) {
       return result;
       }
     result.push([]);
-      const iter2 = (h) => {
-        if (h >= bcols) {
-          return result;
-        }
-        const iter3 = (sum, j) => {
-          if (j >= acols)  {return sum;}
-          return iter3(sum + a[i][j] * b[j][h], j + 1);
-        };
-        result[i][h] = iter3(0, 0);
-      return iter2(h + 1);
-    }
-    iter2(0);
+    iter2(i, 0);
     return iter1(i + 1);
   }
   return iter1(0);
