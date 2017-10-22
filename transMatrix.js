@@ -9,7 +9,7 @@ const transMatrix = (a) => {
         };
   const iter1 = (i) => {
     if (i >= acols) {return result;}
-    result.push([]);
+    result[i] = [];
     iter3(i, 0);
     return iter1(i + 1);
   }
