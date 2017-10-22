@@ -23,7 +23,7 @@ const multiMatrix = (a, b) => {
     if (i >= arows) {
       return result;
       }
-    result.push([]);
+    result[i] = [];
     iter2(i, 0);
     return iter1(i + 1);
   }
