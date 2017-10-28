@@ -7,20 +7,20 @@
 */
 const awk = (str) => {
   const result = [];
-  let state = 'space'; // space, spaceAfterWord, word, enter
+  const state = { st: 'space' }; // space, spaceAfterWord, word, enter
   const getState = (str) => {
     switch (str) {
       case '\n':
-        state = 'enter';
+        state.st = 'enter';
         break;
       case ' ':
-        state === 'word' || state === 'spaceAfterWord' ? state = 'spaceAfterWord' : state = 'space';
+        state.st === 'word' || state.st === 'spaceAfterWord' ? state.st = 'spaceAfterWord' : state.st = 'space';
         break;
       default:
-        state === 'spaceAfterWord' ? state = 'spaceAfterWord' : state = 'word';
+        state.st === 'spaceAfterWord' ? state.st = 'spaceAfterWord' : state.st = 'word';
         break;
       }
-    return state;
+    return state.st;
   };
   const iter = (acc, i) => {
     let newAcc = acc;
